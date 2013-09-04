@@ -1,0 +1,46 @@
+<?php
+
+if ($this->pageCount){
+	// you need to add each of the request parameters to url
+	$params = Zend_Controller_Front::getInstance()->getRequest()->getParams();
+	
+	// remove the system parameters
+	unset($params['module']);
+	unset($params['controller']);
+	unset($params['action']);
+	
+	echo '<ul class="navPag">' . PHP_EOL;
+	
+	echo '<!-- Previous page link -->' . PHP_EOL;
+	if (isset($this->previous)){ ?>
+  		<li>
+  			<a href="<?php echo $this->url(array_merge($params, array('page' => $this->previous))); ?>">
+    			&lt;&lt;&lt;
+  			</a>
+  		</li>
+	<?php } else { ?>
+  		<li><span>&lt;&lt;&lt;</span></li> 
+	<?php } ?>
+
+	<!-- Numbered page links -->
+	<?php foreach ($this->pagesInRange as $page){ ?>
+  		<?php if ($page != $this->current){ ?>
+    		<li>
+    			<a href="<?php echo $this->url(array_merge($params, array('page' => $page))); ?>"><?php echo $page; ?></a>
+    		</li>
+  		<?php } else { ?>
+    		<li><span><?php echo $page; ?></span></li>
+  	<?php }}?>
+
+	<!-- Next page link -->
+	<?php if (isset($this->next)){ ?>
+  		<li>
+  			<a href="<?php echo $this->url(array_merge($params, array('page' => $this->next))); ?>">
+    			&gt;&gt;&gt;
+  			</a>
+  		</li>
+	<?php } else { ?>
+  		<li><span>&gt;&gt;&gt;</span></li>
+	<?php } ?>
+</ul>
+<?php } ?>

@@ -1,0 +1,23 @@
+<?php echo $this->doctype() ?>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+
+<?php echo $this->render('_head.phtml'); ?>
+
+<body>
+	<div id="wrSito">
+	
+		<?php echo $this->render('_header.phtml'); ?>
+		
+		<?php echo $this->render('_menu.phtml'); ?>
+ 		
+ 		<div id="wrPagina">
+			<?php echo $this->layout()->content ?>
+			
+		</div>
+	
+		<?php echo $this->render('_footer.phtml'); ?>
+		
+	</div>
+</body>
+
+</html>

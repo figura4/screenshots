@@ -1,0 +1,3 @@
+User-agent: * 
+Allow: /
+Sitemap: http://www.bitgrabbers.com/sitemap

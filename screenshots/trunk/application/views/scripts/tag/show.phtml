@@ -1,0 +1,41 @@
+<?php $this->inlineScript()->captureStart() ?>
+$(document).ready(function() 
+    { 
+        $("#tags").tablesorter(); 
+    } 
+); 
+<?php $this->inlineScript()->captureEnd() ?>
+
+<h2>&quot;<?php echo $this->escape($this->tag->name); ?>&quot; themed screenshots</h2>
+
+<p><?php echo $this->escape($this->tag->description); ?></p>
+
+<table id="tags" class="tablesorter" width="935" border="0" cellspacing="0" cellpadding="0">
+	<thead>
+    <tr>
+       	<th scope="col" width="170" class="vuota"></th>
+       	<th scope="col" width="130">Taken on</th>
+       	<th scope="col" width="200">Game</th>
+        <th scope="col">Title</th>
+       	
+   </tr>
+   </thead>
+ 	 
+ 	<tbody>  
+	<?php foreach ($this->screenshots as $screenshot) { ?>
+	<tr>	
+		<td>
+			<a href="<?php echo $this->friendlyUrl($screenshot, 'screenshot'); ?>" title="Watch the full size screenshot">	
+				<?php echo '<img src="' . $this->screenshotPath($screenshot, true, true) . '" alt="' . $this->escape($screenshot->description) . '" title="' . $this->escape($screenshot->description) . '" />'; ?>
+			</a>
+		</td>
+		<td>
+			<?php echo $this->formatDate($screenshot->createdOn); ?>
+    	</td>
+		<td><a href='<?php echo $this->friendlyUrl($screenshot->getGame(), 'game') ?>' title="See other screenshots for <?php echo $this->escape($screenshot->getGame()->name); ?>"><?php echo $this->escape($screenshot->getGame()->name); ?></a></td>
+		<td><a href='<?php echo $this->friendlyUrl($screenshot, 'screenshot'); ?>' title="<?php echo $this->escape($screenshot->description); ?>"><?php echo $this->escape($screenshot->pageTitle); ?></a></td>
+	</tr>
+	<?php } ?>
+	</tbody>    
+</table>
+

@@ -1,0 +1,57 @@
+/*************************************************
+ * POST PER SCHEDA
+ */
+
+#wrPagina .wrPost h2{
+	padding: 0;
+	float: left;
+	}
+
+#wrPagina .wrPost .description{
+	margin: 15px 0 0 0;
+	padding: 0;
+	}
+
+#wrPagina .wrPost .wrTitolo{
+	overflow: hidden;
+	margin: 0 0 10px 0;
+	}
+
+#wrPagina .wrPost .author{
+	font-style: italic;
+	font-size: 0.8em;
+	padding: 10px 0 5px 0;
+	}
+
+#wrPagina .wrPost .download{
+	}
+
+#wrPagina .wrPost .wrVoto{
+	float: right;
+	margin: 13px 0 0 0;
+	}
+#wrPagina .wrPost .wrVoto .voteResponse{
+	float: left;
+	padding: 0 10px 0 0;
+	}
+
+#wrPagina .wrPost ul.gallery{
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	}
+#wrPagina .wrPost ul.gallery li{
+	padding: 0;
+	margin: 0 20px 20px 0;
+	float: left;
+	}
+#wrPagina .wrPost ul.gallery a{
+	display: block;
+	}
+#wrPagina .wrPost ul.gallery a:hover{
+	filter: alpha(opacity=50);
+	-moz-opacity:0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+	}

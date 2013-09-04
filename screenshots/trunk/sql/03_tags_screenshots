@@ -1,0 +1,18 @@
+--
+-- Definition of table `tagsScreenshots`
+--
+
+DROP TABLE IF EXISTS tagsScreenshots;
+
+CREATE TABLE  `tagsScreenshots` (
+  `id`				int(10) unsigned NOT NULL auto_increment,
+  `tagId`				int(10) unsigned NOT NULL,
+  `screenshotId`				int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`id`),
+  INDEX `tagId` (`tagId`),
+  INDEX `screenshotId` (`screenshotId`),
+  FOREIGN KEY (tagId) REFERENCES tags(id)
+  	ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (screenshotId) REFERENCES screenshots(id)
+  	ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

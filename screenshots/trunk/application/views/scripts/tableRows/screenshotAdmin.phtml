@@ -1,0 +1,13 @@
+<tr>
+	<td><?php echo '<img src="' . $this->screenshotPath($this->row, true, true) . '" alt="' . $this->escape($this->row->pageTitle) . '" title="' . $this->escape($this->row->pageTitle) . '">'; ?></td>
+	<td>
+		<a href='<?php echo $this->url(array('controller' => 'screenshot', 'action' => 'edit', 'id' => $this->row->id), 'default', true); ?>'>Edit</a> |
+    	<a href='<?php echo $this->url(array('controller' => 'screenshot', 'action' => 'delete', 'id' => $this->row->id), 'default', true); ?>' onclick="return confirm('Are you sure you want to delete?')">Del</a>
+	</td>
+	<td><?php echo $this->escape($this->row->getGame()->name) ?></td>
+	<td><?php echo $this->escape($this->row->pageTitle); ?></td>
+	<td><?php echo $this->row->published? 'YES' : 'NO'; ?></td>
+	<td>
+    	<?php echo $this->formatDate($this->row->pubDate); ?>
+	</td>
+</tr>

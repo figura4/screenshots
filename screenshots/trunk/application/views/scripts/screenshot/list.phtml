@@ -1,0 +1,23 @@
+<h2>Screenshots list</h2>
+
+<div>
+
+<?php echo $this->form; ?>
+
+<table>
+    <tr>
+    	<th></th>
+        <th>Game</th>
+        <th>Title</th>
+        <th>Created on</th>
+    </tr>
+    <?php 
+    	$this->partialLoop()->setObjectKey('row');
+    	echo $this->partialLoop('tableRows/screenshot.phtml', $this->paginator); 
+    ?>
+</table>
+
+<?php echo $this->paginationControl($this->paginator,
+                                            'Sliding',
+                                            'partials/pagination-control.phtml'); ?>
+</div>

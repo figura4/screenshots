@@ -1,0 +1,22 @@
+<?php $this->inlineScript()->captureStart() ?>
+$(document).ready(function() 
+    { 
+        $("#games").tablesorter(); 
+    } 
+); 
+<?php $this->inlineScript()->captureEnd() ?>
+<p>
+Featured games developed by <?php echo $this->escape($this->developer); ?>
+</p>
+
+<table id="games" class="tablesorter" width="935" border="0" cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+        <th scope="col" width="300">Title</th>
+        <th scope="col">Year</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php echo $this->partialLoop('tableRows/gameDeveloper.phtml', $this->items); ?>
+    </tbody>
+</table>

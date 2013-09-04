@@ -1,0 +1,28 @@
+<h2>Games list</h2>
+
+<?php echo $this->form;?>
+
+<p>
+<?php 
+	echo '<a href="' . $this->url(array('controller' => 'game', 'action' => 'create'), 'default', true) . '" title="create">New</a>';
+?>
+</p>
+
+<table width="935" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <th scope="col" width="70"></th>
+        <th scope="col" width="50">Order</th>
+        <th scope="col" width="170">Title</th>
+        <th scope="col" width="170">Publisher</th>
+        <th scope="col" width="70">Year</th>
+        <th scope="col" width="170">Created on</th>
+    </tr>
+    <?php 
+    	echo $this->partialLoop('tableRows/gameAdmin.phtml', $this->paginator);
+    ?>
+</table>
+
+<?php echo $this->paginationControl($this->paginator,
+                                            'Sliding',
+                                            'partials/pagination-control.phtml'); ?>
+

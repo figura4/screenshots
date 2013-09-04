@@ -1,0 +1,314 @@
+BODY{
+	font-family: 'Cuprum', sans-serif, Helvetica;
+	font-size: 1em;
+	color: #999;
+	background: #fff;
+	margin:0;
+	padding:0;
+	background: url("../immagini/sfondo_sito.png") repeat-y center center;
+	}
+
+#wrSito{
+	margin:auto;
+	width:995px;
+	overflow: hidden;
+	}
+
+.bannerPre{
+	font-family: Courier, "Courier New", monospace;
+	width: 750px;
+	line-height: 20px;
+	border: 1px dashed #999;
+	background-color: #dedede;
+	padding: 5px;
+	margin: 0 0 25px 0;
+	}
+	
+
+
+/*************************************************
+ * GENERICI
+ */
+
+a, a:link, a:visited{
+	text-decoration: none;
+	color: #ff6600;
+	}
+a:hover{
+	text-decoration: none;
+	color: #999;
+	}
+
+
+form{
+	margin:0;
+	}
+input, select, textarea{
+	border: 1px solid #666;
+	padding: 5px 6px;
+	background-color: #eee;
+	font-family: monospace;
+	}
+input[type="submit"]{
+	display:block;
+	border-top: 2px solid #ccc;
+	border-left: 2px solid #ccc;
+	border-bottom: 2px solid #888;
+	border-right: 2px solid #888;
+	margin: 10px 0 0 0;
+	font-size: 0.9em;
+	font-family: 'Cuprum', sans-serif, Helvetica;
+	color: #666;
+	}
+
+ul{
+	margin: 0;
+	padding: 0;
+	}
+li{
+	margin: 0;
+	padding: 0;
+	}
+
+form label{
+	display: block;
+	margin: 10px 0 0 0;
+	}
+
+
+/*************************************************
+ * TESTATA
+ */
+
+#wrTestata{
+	height: 30px;
+	padding: 30px;
+	overflow: hidden;
+	}
+#wrTestata .logo{
+	float: left;
+	}
+#wrTestata .social{
+	float: right;
+	}
+#wrTestata .social a{
+	float: right;
+	display: block;
+	margin: 0 0 0 10px;
+	}
+#wrTestata .social a:hover{
+	filter: alpha(opacity=50);
+	-moz-opacity:0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+	}
+#wrTestata .social img{
+	border: none;
+	}
+
+
+
+/*************************************************
+ * CENTRO
+ */
+
+#wrPagina{
+	padding: 30px;
+	font-size: 1.2em;
+	}
+
+#wrPagina h2{
+	margin: 0;
+	padding: 0;
+	color: #666;
+	font-size: 1.2em;
+	font-weight: normal;
+	}
+
+#wrPagina table{
+	margin: 40px 0 0 0;
+	}
+#wrPagina table th{
+	text-align: left;
+	padding: 0 0 5px 20px;
+	border-bottom: 1px solid #ccc;
+	font-weight: normal;
+	font-style: italic;
+	}
+table.tablesorter thead tr .header {
+	background-image: url('../immagini/bg.gif');
+	background-repeat: no-repeat;
+	background-position: center left;
+	cursor: pointer;
+	}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url('../immagini/asc.gif');
+	}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url('../immagini/desc.gif');
+	}
+#wrPagina table th.vuota{
+	background: none;
+	}
+#wrPagina table td{
+	padding: 20px 0 0 0;
+	}
+#wrPagina table td img{
+	border: none;
+	}
+
+
+
+
+/*************************************************
+ * ELENCO POST
+ */
+
+#wrPagina .wrPost{
+	padding: 0 0 40px 0;
+	}
+
+#wrPagina .wrPost h2{
+	margin: 10px 0 5px 0;
+	padding: 0;
+	}
+
+#wrPagina .wrPost h3{
+	margin: 20px 0 10px 0;
+	padding: 0;
+	}
+
+#wrPagina .wrPost .tags{
+	margin: 10px 0 0 0;
+	font-size: 0.8em;
+	}
+#wrPagina .wrPost .tags span a{
+	padding: 0 2px;
+	}
+#wrPagina .wrPost .tags a.gioco{
+	padding: 0 2px;
+	}
+
+
+ul.navPag{
+	margin: 15px 0 0 0;
+	padding: 0;
+	list-style-type: none;
+	overflow: hidden;
+	}
+ul.navPag li{
+	float: left;
+	margin: 0;
+	}
+ul.navPag li span{
+	display: block;
+	padding: 0 8px;
+	}
+ul.navPag li a{
+	display: block;
+	padding: 0 8px;
+	}
+ul.navPag a:hover{
+	background: #ccc;
+	}
+
+
+
+
+/*************************************************
+ * FORM
+ */
+
+ul.errors{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	}
+ul.errors li{
+	margin: 0 0 10px 0;
+	padding: 0;
+	color: red;
+	}
+
+
+
+/*************************************************
+ * LINKS
+ */
+
+.links li{
+	margin: 0 0 30px 0;
+	}
+.links a{
+	display: block;
+	padding: 0 0 2px 0;
+	margin: 0 0 2px 0;
+	border-bottom: 1px solid #999;
+	}
+	
+.button {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	color: #fef4e9 !important;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	margin-top: 1em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+
+.orange {
+	color: #fef4e9;
+	border: solid 1px #da7c0c;
+	background: #f78d1d;
+	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.orange:hover {
+	background: #f47c20;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+	background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+.orange:active {
+	color: #fcd3a5;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+	background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+
+
+/*************************************************
+ * FOOTER
+ */
+
+#wrFooter{
+	border-top: 3px solid #666;
+	background-color: #888;
+	color: #ccc;
+	padding: 20px 30px;
+	margin: 20px 0 0 0;
+	list-style-type: none;
+	overflow: hidden;
+	}
+
+#wrFooter li{
+	padding: 0 40px 0 0;
+	float: left;
+	}

@@ -1,0 +1,53 @@
+<?php $this->inlineScript()->captureStart() ?>
+$(document).ready(function() 
+    { 
+        $("#screenshots").tablesorter(); 
+    } 
+); 
+<?php $this->inlineScript()->captureEnd() ?>
+
+<h2>The game</h2>
+<p>
+	<strong><?php echo $this->escape($this->game->name); ?></strong> 
+	was developed by <a href="<?php echo $this->url(array('name' => $this->escape($this->game->publisher)), 'developer', true); ?>" title="See other games developed by <?php echo $this->game->publisher; ?>"><?php echo $this->game->publisher; ?></a> 
+	and published in <?php echo $this->escape($this->game->year); ?>.
+</p>
+<p>
+	<?php echo $this->escape($this->game->name); ?>
+	is a
+	<?php echo $this->escape($this->game->description); ?>
+</p>
+
+<table id="screenshots" class="tablesorter" width="935" border="0" cellspacing="0" cellpadding="0">
+  <thead>
+  <tr>
+    <th scope="col" width="170" class="vuota"></th>
+    <th scope="col" width="130">Taken on</th>
+    <th scope="col" width="100">Rating</th>
+    <th scope="col">Title</th>
+  </tr>
+  </thead>
+  <tbody>
+  <?php foreach ($this->screenshots as $screenshot) { ?>
+  	 <tr>
+    	<td>
+    		<a href="<?php echo $this->friendlyUrl($screenshot, 'screenshot'); ?>" title="<?php echo $this->escape($screenshot->pageTitle); ?>">
+    			<img src="<?php echo $this->screenshotPath($screenshot, true, true); ?> " alt="<?php echo $this->escape($screenshot->description); ?>" title="<?php echo $this->escape($screenshot->description); ?>" />
+    		</a>
+    	</td>
+    	<td>
+    		<?php echo $this->formatDate($screenshot->pubDate); ?>
+    	</td>
+    	<td>
+    		<?php echo $this->escape($screenshot->getAverageRating()); ?>/5
+    	</td>
+    	<td>
+    		<a href="<?php echo $this->friendlyUrl($screenshot, 'screenshot'); ?>" title="<?php echo $this->escape($screenshot->description); ?>">
+    			<?php echo $this->escape($screenshot->pageTitle); ?>
+    		</a>
+    	</td>
+  	</tr>
+  <?php } ?>
+  </tbody>    
+</table>
+

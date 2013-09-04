@@ -1,0 +1,17 @@
+<h2>Tags list</h2>
+
+<div>
+
+<?php echo $this->form;?>
+
+<table>
+    <tr>
+        <th>Tag</th>
+    </tr>
+    <?php echo $this->partialLoop('tableRows/tag.phtml', $this->paginator); ?>
+</table>
+
+<?php echo $this->paginationControl($this->paginator,
+                                            'Sliding',
+                                            'partials/pagination-control.phtml'); ?>
+</div>

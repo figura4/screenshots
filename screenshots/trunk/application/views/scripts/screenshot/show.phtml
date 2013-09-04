@@ -1,0 +1,98 @@
+<?php $this->inlineScript()->captureStart() ?>
+        $(document).ready(function() {
+            //lego un title="numero" all'evento over
+            $("#voteStars").bind('over', function (event,value) {
+                        $(this).attr('title', value);
+                        });
+
+             //we bind only to the rateit controls within the products div
+             $('#voteStars').bind('rated reset', function (e) {
+                 var ri = $(this);
+
+                 //if the use pressed reset, it will get value: 0 (to be compatible with the HTML range control), we could check if e.type == 'reset', and then set the value to  null .
+                 var value = ri.rateit('value');
+                 var productID = <?php echo $this->screenshot->id; ?>
+
+                 //maybe we want to disable voting? (dopo il primo voto)
+                 ri.rateit('readonly', true);
+                 $.ajax({
+                     url: '/screenshot/rate/', //your server side script
+                     data: { id: productID, value: value }, //our data
+                     type: 'POST',
+                     success: function (data) {
+                         $('.voteResponse').html(data);
+                     },
+                     error: function (jxhr, msg, err) {
+                         $('.voteResponse').html(msg);
+                     }
+                 });
+             });
+     });
+     
+     //$(function() {
+  		// initialize scrollable
+  	//	$(".scrollable").scrollable();
+	//});
+<?php $this->inlineScript()->captureEnd() ?>
+
+<div class="wrPost">
+	<div class="wrTitolo hreview-aggregate">
+		<h2 class="item">
+			<span class="fn">&quot;<?php echo $this->escape($this->screenshot->pageTitle); ?>&quot;</span>
+		</h2>
+		<div class="wrVoto">
+        	<div class="voteResponse"></div>
+            <div id="voteStars" class="rateit" data-productid="1" data-rateit-resetable="false" data-rateit-value="<?php echo $this->screenshot->getAverageRating(); ?>"></div>
+            <span class="rating"><?php echo $this->screenshot->getAverageRating(); ?></span> (<span class="votes"><?php echo $this->escape($this->screenshot->votes); ?></span> votes)
+		</div>
+	</div>
+
+	<img src="<?php echo $this->screenshotPath($this->screenshot, true, false); ?>" width="930" alt="<?php echo $this->escape($this->screenshot->pageTitle); ?>" />
+	<h3>Thoughts on this screenshot</h3>
+	<div class="description"><?php echo $this->escape($this->screenshot->description); ?></div>
+	<div class="author">
+		Posted on <?php echo $this->formatDate($this->screenshot->createdOn); ?> 
+		by <strong><?php echo $this->screenshot->getUser()->username; ?></strong>
+	</div>
+	
+	<?php list($width, $height, $type, $attr) = getimagesize('./' . $this->screenshotPath($this->screenshot, false)); ?>
+	<a class="button orange" href="<?php echo $this->url(array('controller' => 'screenshot', 'action' => 'download', 'id' => $this->screenshot->id), 'default', true); ?>" title="Download this screenshot">Download this screenshot at <?php echo $width; ?>x<?php echo $height ?> pixels</a>  
+	<div class="wrPostSubsection">
+		<h3>Screenshot tags</h3>
+		<?php 
+			$tagsarray = array();
+    		foreach ($this->tags as $tag) {
+				$title = (empty($tag->description)) ? 'See other screenshots tagged ' . $this->escape($tag->name) : $this->escape($tag->description);
+    			$tagsarray[] = '<a href="' . $this->friendlyUrl($tag, 'tag') . '" title="' . $title . '">' . $this->escape($tag->name) . '</a>';
+    		}
+    		echo implode(', ', $tagsarray);
+    	?>
+	</div>
+	
+	<div class="wrPostSubsection">
+		<h3>The Game</h3>
+		This screenshot was taken while playing <a href="<?php echo $this->friendlyUrl($this->game, 'game'); ?>" title="More screenshots for <?php echo $this->escape($this->game->name); ?>"><?php echo $this->escape($this->game->name); ?></a>.<br /> 
+		The game was released in <?php echo $this->escape($this->game->year); ?> 
+		by <a href="<?php echo $this->url(array('name' => $this->game->publisher), 'developer', true); ?>" title="See other games developed by <?php echo $this->escape($this->game->publisher); ?>"><?php echo $this->escape($this->game->publisher); ?></a>.
+		<br />
+		<?php echo $this->escape($this->game->name); ?>
+		is a
+		<?php echo $this->escape($this->game->description); ?>
+		
+		<?php 
+			$thumbnails = $this->game->getScreenshots(); 
+			if (count($thumbnails) > 1) {
+				echo '<h3>More screenshots from ' . $this->escape($this->game->name) . '</h3>' . PHP_EOL;
+				//echo $this->scrollableThumbnails($thumbnails, 5);
+				echo '<ul class="gallery">';
+				foreach ($this->game->getScreenshots() as $screenshot) { ?>
+					<li>
+						<a href="<?php echo $this->friendlyUrl($screenshot, 'screenshot'); ?>" title="<?php echo $this->escape($screenshot->pageTitle); ?>">
+							<img src="<?php echo $this->screenshotPath($screenshot, true, true); ?> " alt="<?php echo $this->escape($screenshot->pageTitle); ?>" />
+						</a>
+					</li>
+				<?php } ?>
+				</ul>
+			<?php } ?>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+<head>
+  	<?php 
+  		echo $this->headMeta();
+  		echo $this->headTitle();
+  		echo $this->headLink();
+  		echo $this->jQuery();
+  		echo $this->headScript();
+  		
+  		$excludedActions = array('admin', 'create', 'edit', 'delete', 'login');
+  		if((APPLICATION_ENV == 'production') && (in_array(Zend_Controller_Front::getInstance()->getRequest()->getActionName(), $excludedActions) == false)) { 
+  			$this->inlineScript()->captureStart(); ?>
+  					var _gaq = _gaq || [];
+  					_gaq.push(['_setAccount', 'UA-37502423-1']);
+  					_gaq.push(['_trackPageview']);
+
+  					(function() {
+    					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  					})();
+			<?php $this->InlineScript()->captureEnd();
+  		}
+  		
+  		echo $this->inlineScript();
+?>
+  		
+</head>

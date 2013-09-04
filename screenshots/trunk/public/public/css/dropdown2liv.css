@@ -1,0 +1,118 @@
+/* ================================================================
+This copyright notice must be untouched at all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssplay.co.uk/menus/final_drop.html
+Copyright (c) 2005-2008 Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any
+way to fit your requirements.
+=================================================================== */
+
+.menudrop2liv{
+	background-color:#ddd;
+	height: 30px;
+	font-size: 1.2em;
+	}
+
+.menudrop2liv h1{
+	padding: 4px 35px 4px 12px;
+	margin: 0;
+	font-weight: normal;
+	font-size: 1em;
+	color: #666;
+	overflow: hidden;
+	height: 20px;
+	width: 400px;
+	text-align: right;
+	}
+
+/* remove all the bullets, borders and padding from the default list styling */
+.menudrop2liv ul {
+	padding: 0;
+	margin: 0;
+	list-style-type:none;
+	}
+/* float the list to make it horizontal and a relative positon so that you can control the dropdown menu positon */
+.menudrop2liv li {
+	float:left;
+	z-index:100;
+	position:relative;
+	}
+
+.menudrop2liv .dropdown{
+	font-size: 1em;
+	background:url(../immagini/arrow.gif) no-repeat right center;
+	background-color: #ddd;
+	}
+
+.menudrop2liv a, .menudrop2liv a:link, .menudrop2liv a:visited{
+	text-decoration: none;
+	color:#000;
+	}
+.menudrop2liv a:hover{
+	text-decoration: none;
+	color:#000;
+	}
+
+
+
+
+/* PRIMO LIVELLO */
+
+/* style the links for the top level */
+.menudrop2liv a, .menudrop2liv a:visited {
+	display:block;
+	text-decoration:none;
+	/*width:150px;*/
+	border-right: 1px solid #ffffff;
+	padding: 4px 30px 4px 12px;
+	margin: 0;
+	}
+.menudrop2liv a:hover{
+	background-color: #aaa;
+	}
+.menudrop2liv .primo a{
+	padding-left: 30px;
+	}
+.menudrop2liv .ultimo{
+    float: right;
+	}
+
+
+
+
+/* SECONDO LIVELLO */
+
+/* style the second level links */
+.menudrop2liv ul ul a, .menudrop2liv ul ul a:visited {
+	height:auto;
+	width:160px;
+	border:1px solid #ffffff;
+	border-top: none;
+	border-left: none;
+	padding: 4px 30px 4px 12px;
+	margin: 0;
+	}
+/* style the second level hover */
+.menudrop2liv ul ul a:hover{
+	background-color: #aaa;
+	}
+
+.menudrop2liv ul ul li {
+	background-color: #ddd;
+	}
+
+/* make the second level visible when hover on first level list OR link */
+.menudrop2liv ul li:hover ul,
+.menudrop2liv ul a:hover ul{
+	visibility:visible;
+	}
+
+/* hide the sub levels and give them a positon absolute so that they take up no room */
+.menudrop2liv ul ul {
+	visibility:hidden;
+	position:absolute;
+	height:0;
+	width:190px;
+	border-top:1px solid #ffffff;
+	}

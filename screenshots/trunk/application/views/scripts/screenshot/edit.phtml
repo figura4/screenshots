@@ -1,0 +1,12 @@
+<?php $this->inlineScript()->captureStart(); ?>
+  		$(function() {
+    		$(".datePicker").datepicker({ dateFormat: "yy-mm-dd" });
+  		});
+<?php $this->InlineScript()->captureEnd(); ?>
+
+<div id="view-content">
+	<p>Please edit screenshot details</p>
+	<?php
+		echo $this->form;	
+	?>
+</div>

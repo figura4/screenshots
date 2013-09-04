@@ -1,0 +1,97 @@
+<div class="menudrop2liv">
+	<ul>
+		<li class="ultimo">
+			<?php echo '<h1>' . $this->escape($this->pageTitle) . '</h1>'; ?>
+		</li>
+		
+		<li class="primo">
+			<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index'), 'default', true); ?>" >Home</a>
+		</li>
+		
+		<?php 
+		$num = Zend_Registry::get('itemsInNavMenu');
+		$tags = Zend_Registry::get('tagMapper')->fetchAll(null, 'order', $num);
+		$games = Zend_Registry::get('gameMapper')->fetchAll(null, 'order', $num);
+		
+		if (count($games)>0) {
+			echo '<li>' . PHP_EOL;
+			echo '<a href="javascript: void(0)">Games</a>' . PHP_EOL;
+			echo '<ul>' . PHP_EOL;
+			foreach ($games as $game) {
+				echo '<li>' . PHP_EOL;
+				$description = $this->escape($game->description);
+				$title = (empty($description)) ? '' : 'title="' . $description . '"';
+				echo '<a href="' . $this->friendlyUrl($game, 'game') . '" ' .  $title . '>' . $this->escape($game->name) . '</a>' . PHP_EOL;
+				echo '</li>' . PHP_EOL;
+			}
+			echo '<li>' . PHP_EOL;
+			echo '<a href="' . $this->url(array('controller' => 'game', 'action' => 'list'), 'default', true) . '" title="Featured games list">Other games</a>' . PHP_EOL;
+			echo '</li>' . PHP_EOL;
+			echo '</ul>' . PHP_EOL;
+			echo '</li>' . PHP_EOL;
+		}
+		
+
+		if (count($tags)>0) {
+			echo '<li>' . PHP_EOL;
+			echo '<a href="javascript: void(0)">Tags</a>' . PHP_EOL;
+			//echo 'Tags' . PHP_EOL;
+			echo '<ul>' . PHP_EOL;
+			foreach ($tags as $tag) {
+				echo '<li>' . PHP_EOL;
+				$description = $this->escape($tag->description);
+				$title = (empty($description)) ? '' : 'title="' . $description . '"';
+				echo '<a href="' . $this->friendlyUrl($tag, 'tag') . '" ' . $title . '>' . $this->escape($tag->name) . '</a>' . PHP_EOL;
+				echo '</li>' . PHP_EOL;
+			}
+			echo '</ul>' . PHP_EOL;
+			echo '</li>' . PHP_EOL;
+		}
+		?>
+		
+		<li>
+			<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'link'), 'links', true); ?>" title="Links we like">Links</a>
+		</li>
+		
+				<li>
+			<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'about'), 'about', true); ?>" title="About the bitgrabbers">About</a>
+		</li>
+
+		<?php 
+		$auth = Zend_Auth::getInstance();
+		if($auth->hasIdentity()) {
+			$identity = $auth->getIdentity();
+			$role = strtolower($identity->role);
+			if ($role == 'admin') {
+				echo '<li>' . PHP_EOL;
+				echo '<a href="">Admin</a>' . PHP_EOL;
+				echo '<ul>' . PHP_EOL;
+				
+				echo '<li>' . PHP_EOL;
+				echo '<a href="' . $this->url(array('controller' => 'screenshot', 'action' => 'admin'), 'default', true) . '">Screenshots</a>' . PHP_EOL;
+				echo '</li>' . PHP_EOL;
+				
+				echo '<li>' . PHP_EOL;
+				echo '<a href="' . $this->url(array('controller' => 'game', 'action' => 'admin'), 'default', true) . '">Games</a>' . PHP_EOL;
+				echo '</li>' . PHP_EOL; 
+				
+				echo '<li>' . PHP_EOL;
+				echo '<a href="' . $this->url(array('controller' => 'tag', 'action' => 'admin'), 'default', true) . '">Tags</a>' . PHP_EOL;
+				echo '</li>' . PHP_EOL;
+				
+				echo '<li>' . PHP_EOL;
+				echo '<a href="' . $this->url(array('controller' => 'user', 'action' => 'admin'), 'default', true) . '">Users</a>' . PHP_EOL;
+				echo '</li>' . PHP_EOL;
+				
+				echo '<li>' . PHP_EOL;
+				echo '<a href="' . $this->url(array('controller' => 'user', 'action' => 'logout'), 'default', true) . '">Logout</a>' . PHP_EOL;
+				echo '</li>' . PHP_EOL;
+				
+				echo '</ul>' . PHP_EOL;
+				echo '</li>' . PHP_EOL;
+			}
+		}
+
+	?>
+	</ul>
+</div>

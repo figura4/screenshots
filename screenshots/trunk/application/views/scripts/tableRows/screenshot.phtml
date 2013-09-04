@@ -1,0 +1,8 @@
+<tr>
+	<td><?php echo '<img src="' . $this->screenshotPath($this->row, true, true) . '" alt="' . $this->escape($this->row->pageTitle) . '" title="' . $this->escape($this->row->pageTitle) . '">'; ?></td>
+	<td><?php echo $this->escape($this->row->getGame()->name) ?></td>
+	<td><?php echo $this->escape($this->row->pageTitle); ?></td>
+	<td>
+		<?php echo $this->formatDate($this->pubDate); ?>
+	</td>
+</tr>

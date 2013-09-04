@@ -1,0 +1,11 @@
+<tr>
+	<td>
+		<a href='<?php echo $this->url(array('controller' => 'game', 'action' => 'edit', 'id' => $this->id), 'default', true); ?>'>Edit</a> |
+    	<a href='<?php echo $this->url(array('controller' => 'game', 'action' => 'delete', 'id' => $this->id), 'default', true); ?>' onclick="return confirm('Are you sure you want to delete?')">Del</a>
+	</td>
+	<td><?php echo $this->order; ?></td>
+	<td><?php echo $this->escape($this->name); ?></td>
+	<td><?php echo $this->publisher; ?></td>
+	<td><?php echo $this->year; ?></td>
+	<td><?php echo $this->formatDate($this->createdOn); ?></td>
+</tr>

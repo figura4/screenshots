@@ -1,0 +1,38 @@
+<?php
+    foreach ($this->paginator as $screenshot) {
+    	$game = $screenshot->getGame();
+    	$tags = $screenshot->getTags();
+    	echo '<div class="wrPost">';
+    		echo "\r\n";
+    		echo '<a href="' . $this->friendlyUrl($screenshot, 'screenshot') . '" title="' . $this->escape($screenshot->description) . '">';
+    		echo '<img src="' . $this->screenshotPath($screenshot, true, false) . '" width="930" alt="' . $this->escape($screenshot->pageTitle) . '" title="' . $this->escape($screenshot->pageTitle) . '" />';
+    		echo "</a>";
+    		echo "\r\n";
+    		echo '<h2>&quot;' . $this->escape($screenshot->pageTitle) . '&quot;</h2>';
+    		echo "\r\n";
+    		echo '<div class="description">' . $this->escape($screenshot->description) . '</div>';
+    		echo "\r\n";
+    		echo '<div class="tags">';
+    			echo '['; 
+    			echo '<a href="' . $this->friendlyUrl($game, 'game') . '" class="gioco" title="See other screenshots for ' . $this->escape($game->name) . '">' . $this->escape($game->name) . '</a>';  
+    			echo '] - ';
+    			echo '<span>';
+    			$tagsarray = array();
+    			foreach ($tags as $tag) {
+    				$title = (empty($tag->description)) ? $this->escape($tag->name) : $this->escape($tag->description);
+    				$tagsarray[] = '<a href="' . $this->friendlyUrl($tag, 'tag') . '" title="' . $title . '">' . $this->escape($tag->name) . '</a>';
+    			}
+    			echo implode(', ', $tagsarray);
+    			echo '</span>';
+    			echo "\r\n";
+    		echo '</div>';  
+    		echo "\r\n";
+        echo '</div>';
+        echo "\r\n";
+    }
+
+    echo $this->paginationControl($this->paginator,
+        	                          'Sliding',
+                                  'partials/home-pagination-control.phtml'
+            	    );
+?>

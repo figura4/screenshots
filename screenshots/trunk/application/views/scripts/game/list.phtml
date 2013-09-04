@@ -1,0 +1,34 @@
+<?php $this->inlineScript()->captureStart() ?>
+$(document).ready(function() 
+    { 
+        $("#games").tablesorter(); 
+    } 
+); 
+<?php $this->inlineScript()->captureEnd() ?>
+
+<h2>Featured games</h2>
+
+<p>
+	These are all the videogames featured here. 
+	<br />
+	Every <strong>game</strong> has been played by and every <strong>screenshot</strong> carefully taken by the bitgrabbers staff.
+	<br />
+	(Oh, and also the silly screenshot comments are written by the bitgrabbers)
+</p>
+
+<table id="games" class="tablesorter" width="935" border="0" cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+        <th scope="col">Title</th>
+        <th scope="col" width="235">Developer</th>
+        <th scope="col" width="100">Year</th>
+        <th scope="col" width="100">Screenshots</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php 
+    	$this->partialLoop()->setObjectKey('item');
+    	echo $this->partialLoop('tableRows/game.phtml', $this->items); 
+    ?>
+    </tbody>
+</table>
